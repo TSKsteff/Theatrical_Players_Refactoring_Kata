@@ -1,4 +1,4 @@
-using TheatricalPlayersRefactoringKata.Domain.enums;
+
 using TheatricalPlayersRefactoringKata.Domain.Interface;
 using TheatricalPlayersRefactoringKata.Domain.Interface.impl;
 using TheatricalPlayersRefactoringKata.Domain.Model;
@@ -7,21 +7,26 @@ namespace TheatricalPlayersRefactoringKata.Domain.Utils;
 
 public class PlayFactory
 {
-    public static Play CreatePlay(string title, int lines, PlayType playType)
+    public static void CreatePlay(Performance performance,int audience, int lines, PlayType playType)
     {
-        IPlayCalculationStrategy strategy = playType.name switch
+        switch(playType.name)
         {
-            "Tragedy" => new TragedyCalculationStrategy(),
-            "Comedy" => new ComedyCalculationStrategy(),
-            "Historical" => new HistoricalCalculationStrategy()
+            case "Tragedy": 
+                TragedyCalculationStrategy tragedyCalculationStrategy = new TragedyCalculationStrategy();
+                performance.creditsEarned = tragedyCalculationStrategy.CalculateCredits(audience);
+                performance.calPerformance = tragedyCalculationStrategy.CalculatePerformanceCost(lines, audience);
+                break;
+            case "Comedy": 
+                ComedyCalculationStrategy comedyCalculationStrategy = new ComedyCalculationStrategy();
+                performance.creditsEarned = comedyCalculationStrategy.CalculateCredits(audience);
+                performance.calPerformance = comedyCalculationStrategy.CalculatePerformanceCost(lines, audience);
+                break;
+            case "Historical": 
+                HistoricalCalculationStrategy historicalCalculationStrategy = new HistoricalCalculationStrategy();
+                performance.creditsEarned = historicalCalculationStrategy.CalculateCredits(audience);
+                performance.calPerformance = historicalCalculationStrategy.CalculatePerformanceCost(lines, audience);
+                break;
         };
-
-        return new Play(strategy)
-        {
-            title = title,
-            lines = lines,
-            playTypeId = playType.id,
-            playType = playType
-        };
+        
     }
 }

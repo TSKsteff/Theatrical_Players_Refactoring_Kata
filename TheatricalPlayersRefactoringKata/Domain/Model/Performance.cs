@@ -13,13 +13,14 @@ public class Performance
     [ForeignKey(nameof(InvoiceId))] 
     [Column("invoice_id")]
     public int InvoiceId { get; set; }
-    public Invoice invoice { get; set; }
     
     [ForeignKey(nameof(playId))] 
     [Column("play_id")]
     public int playId { get; set; }
-    public Play play { get; set; }
+    public DateTime time { get; set; }
     public int audience { get; set; }
-    public int creditsEarned { get; set; }
+    [Column("credits_earned")]public int creditsEarned { get; set; }
+    [Column("cal_performance")]public decimal calPerformance { get; set; }
+    
  
 }

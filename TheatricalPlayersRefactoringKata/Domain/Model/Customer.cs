@@ -14,5 +14,5 @@ public class Customer
     public string email { get; set; }
     [Column("credit_balance")]public int creditBalance { get; set; }
     
-    public List<Invoice> invoices { get; set; }
+    public List<Invoice> invoices { get; set; } = new List<Invoice>();
 }

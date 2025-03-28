@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using TheatricalPlayersRefactoringKata.Domain.enums;
 using TheatricalPlayersRefactoringKata.Domain.Model;
 
 namespace TheatricalPlayersRefactoringKata.Info;

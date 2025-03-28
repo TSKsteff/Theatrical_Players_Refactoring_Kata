@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TheatricalPlayersRefactoringKata.Domain.enums;
 using TheatricalPlayersRefactoringKata.Domain.Interface;
 
 namespace TheatricalPlayersRefactoringKata.Domain.Model;
@@ -14,26 +13,12 @@ public class Play
     public int id { get; set; }
     public string title { get; set; }
     public int lines { get; set; }
-    
-    [ForeignKey(nameof(playTypeId))] 
+
+    [ForeignKey(nameof(playTypeId))]
     [Column("play_type_id")]
     public int playTypeId { get; set; }
-    public PlayType playType { get; set; }
+
+    public List<Performance> performances { get; set; } = new List<Performance>(); 
     
-   
-    public Play(){}
-    
-    private readonly IPlayCalculationStrategy _calculationStrategy;
-
-    public Play(IPlayCalculationStrategy calculationStrategy)
-    {
-        _calculationStrategy = calculationStrategy;
-    }
-
-    public decimal CalculatePerformanceCost(int audience)
-        => _calculationStrategy.CalculatePerformanceCost(lines, audience);
-
-    public int CalculateCredits(int audience)
-        => _calculationStrategy.CalculateCredits(audience);
 
 }

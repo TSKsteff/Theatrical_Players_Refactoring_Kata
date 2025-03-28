@@ -33,7 +33,7 @@ public class PlayResource
     [HttpPut("/updatePLay/{id}")]
     public  ActionResult<Play> Update(int id, PlayDto play)
     {
-        _playService.Update(play);
+        _playService.Update(id, play);
         return _playService.GetById(id);
     }
 

@@ -34,7 +34,8 @@ public class ExtratoService : IExtratoService
     public ExtratoCliente gerarDadosExtrato(int customerId)
     {
         var customer = _customerService.GetById(customerId);
-        var invoices = _invoiceService.GetAll().Where(x => x.customerId == customerId);
+        var invoices = _invoiceService.GetAll();
+        invoices.ForEach(invoice => invoice.customerId = customer.id);
 
         return new ExtratoCliente
         {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TheatricalPlayersRefactoringKata")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6411534346184692dff23a11a61b9aeeb09c5f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("TheatricalPlayersRefactoringKata")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TheatricalPlayersRefactoringKata")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

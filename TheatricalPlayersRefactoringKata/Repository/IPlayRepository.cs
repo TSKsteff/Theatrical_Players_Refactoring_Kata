@@ -9,7 +9,7 @@ public interface IPlayRepository
     public Play? GetById(int id);
     public List<Play> GetAll(); 
     public Play Save(PlayDto obj);
-    public Play Update(PlayDto playDto);
+    public Play Update(int id, PlayDto playDto);
     public void Delete(int id);
     
 }

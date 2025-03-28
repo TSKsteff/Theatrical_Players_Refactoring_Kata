@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TheatricalPlayersRefactoringKata.Domain.DTOs;
 using TheatricalPlayersRefactoringKata.Domain.Model;
 using TheatricalPlayersRefactoringKata.Repository;
 using TheatricalPlayersRefactoringKata.Service;
@@ -8,7 +9,7 @@ namespace TheatricalPlayersRefactoringKata.Controller;
 [Route("/api/performance")]
 public class PerformanceResource
 {
-    private readonly PerformanceService _performamceService;
+    private readonly PerformanceService _performamceService = new PerformanceService();
     
     [HttpGet("/getPerformanceById/{id}")]
     public Performance GetById(int id)
@@ -29,9 +30,10 @@ public class PerformanceResource
     }
 
     [HttpPost("/createPerformance")]
-    public Performance createPerformance(int invoiceId, int playId, int audience)
+    public Performance Post([FromBody]PerformanceDto performanceDto)
     {
-        return _performamceService.Save(invoiceId, playId, audience);
+        Console.WriteLine(performanceDto.audience);
+        return _performamceService.Save(performanceDto);
     }
     
 }

@@ -1,4 +1,4 @@
-using TheatricalPlayersRefactoringKata.Domain.enums;
+
 using TheatricalPlayersRefactoringKata.Domain.Model;
 
 namespace TheatricalPlayersRefactoringKata.Domain.DTOs;

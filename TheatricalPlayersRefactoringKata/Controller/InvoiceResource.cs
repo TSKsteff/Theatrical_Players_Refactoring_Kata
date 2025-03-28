@@ -30,9 +30,16 @@ public class InvoiceResource
     }
 
     [HttpPost("/createInvoice")]
-    public Invoice createInvoice(int customerId, List<PerformanceDto> performanceDtos)
+    public Invoice createInvoice(int customerId)
     {
-        return _invoiceService.Save(customerId, performanceDtos);
+        return _invoiceService.Save(customerId);
+    }
+    
+    [HttpPost("/addPerformanceToInvoice")]
+    public  ActionResult<Invoice> addPerformance(int invoiceId, int performanceId)
+    {
+        _invoiceService.AddPerformanceToInvoice(invoiceId, performanceId);
+        return _invoiceService.GetById(invoiceId);
     }
     
 }
