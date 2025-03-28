@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres
+    container_name: teste-backend-v3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: teste-backend-v3-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    restart: always
+
+volumes:
+  pgdata:
+  pgadmindata:

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Extrato Teatral</title>
+    <link rel="stylesheet" type="text/css" href="StyleTemplate.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Extrato Teatral</h1>
+            <div class="client-info">
+                <p><strong>Cliente:</strong> {{nomeCliente}}</p>
+                <p><strong>Email:</strong> {{emailCliente}}</p>
+                <p><strong>Data do Extrato:</strong> {{dataFatura}}</p>
+            </div>
+        </header>
+
+        <section class="summary">
+            <h2>Resumo Financeiro</h2>
+        </section>
+
+        <section class="invoices">
+            <h2>Faturas</h2>
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Performance</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#faturas}}
+                    <tr>
+                        <td>{{Id}}</td>
+                        <td>{{Performance.Nome}}</td>
+                        <td>{{Data.ToString "dd/MM/yyyy"}}</td>
+                        <td class="amount">{{Valor.ToString "C"}}</td>
+                        <td class="{{Status}}">{{Status}}</td>
+                    </tr>
+                    {{/faturas}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td class="amount">{{totalGeral}}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <footer class="footer">
+            <p>Gerado em {{dataGeracao}} por Theatrical Players</p>
+        </footer>
+    </div>
+</body>
+</html>

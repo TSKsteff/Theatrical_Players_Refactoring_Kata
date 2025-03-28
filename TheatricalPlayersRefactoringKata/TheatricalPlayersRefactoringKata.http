@@ -1,0 +1,22 @@
+@TheatricalPlayersRefactoringKata_HostAddress = http://localhost:5183
+
+GET {{TheatricalPlayersRefactoringKata_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{TheatricalPlayersRefactoringKata_HostAddress}}/api/play/create
+Content-Type: application/json
+
+{
+  "name": "Hamlet",
+  "lines": 500,
+  "type": "Tragedy"
+}
+
+###
+
+GET {{TheatricalPlayersRefactoringKata_HostAddress}}/api/play/getByID/1
+Accept: application/json
+
+###
